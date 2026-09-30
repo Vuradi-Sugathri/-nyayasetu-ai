@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables & secrets (CRITICAL FOR DEPLOYMENT)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+
+# Audio cache & generated binary media
+data/audio_cache/*.mp3
+data/audio_cache/*.wav
+!data/audio_cache/.gitkeep
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Unit test & coverage reports
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

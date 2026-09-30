@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NyayaSetu AI (న్యాయసేతు AI) - Citizen Legal Bridge & BNS/IPC Justice Assistant</title>
+  
+  <!-- Modern Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- High Court Judicial Styling -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       TOP HEADER & NAVIGATION BAR
+       ======================================================================== -->
+  <header class="header-wrapper">
+    <div class="container header-content">
+      
+      <!-- Brand & Judicial Identity -->
+      <div class="brand-section">
+        <div class="brand-icon-box" title="Scales of Justice">⚖️</div>
+        <div class="brand-titles">
+          <div class="brand-title">
+            <span data-i18n="brandTitle">NyayaSetu AI (న్యాయసేతు AI)</span>
+            <span class="brand-tag" data-i18n="badgeBnsReady">BNS 2023 READY</span>
+          </div>
+          <div class="brand-subtitle" data-i18n="brandSubtitle">
+            AI Citizen Legal Tech Bridge, BNS/IPC Statutory Mapping & Document Drafter
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls & Location -->
+      <div class="controls-section">
+        <!-- Live Location Badge -->
+        <div class="location-indicator" id="detectedLocationBadge" data-i18n="locCentroidLocked">
+          📍 Telangana (Centroid Locked)
+        </div>
+
+        <!-- State Selector -->
+        <div class="control-pill">
+          <label for="locationSelect" data-i18n="locStateLabel">State / UT:</label>
+          <select id="locationSelect" class="control-select">
+            <option value="Telangana" selected>Telangana (తెలంగాణ)</option>
+            <option value="Andhra Pradesh">Andhra Pradesh (ఆంధ్రప్రదేశ్)</option>
+            <option value="Maharashtra">Maharashtra (महाराष्ट्र)</option>
+            <option value="Karnataka">Karnataka (ಕರ್ನಾಟಕ)</option>
+            <option value="Tamil Nadu">Tamil Nadu (தமிழ்நாடு)</option>
+            <option value="Odisha">Odisha (ଓଡ଼ିଶା)</option>
+            <option value="Assam">Assam (অসম)</option>
+            <option value="Delhi / North India">Delhi / North India (दिल्ली)</option>
+          </select>
+        </div>
+
+        <!-- 8 Indian Languages Selector -->
+        <div class="control-pill">
+          <label for="languageSelect">Language / భాష:</label>
+          <select id="languageSelect" class="control-select">
+            <option value="en">English (Official)</option>
+            <option value="te" selected>తెలుగు (Telugu)</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="ta">தமிழ் (Tamil)</option>
+            <option value="mr">मराठी (Marathi)</option>
+            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+            <option value="or">ଓଡ଼ିଆ (Odia)</option>
+            <option value="as">অসমীয়া (Assamese)</option>
+          </select>
+        </div>
+
+        <!-- High Contrast & Reading Mode -->
+        <button id="contrastToggleBtn" class="chip-btn" data-i18n="btnContrast">👁️ High Contrast</button>
+        <button id="dayModeToggleBtn" class="chip-btn" data-i18n="btnDayMode">☀️ Day Mode</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       6-PILLAR NAVIGATION TABS
+       ======================================================================== -->
+  <nav class="view-tabs-bar">
+    <div class="container tabs-container">
+      <button class="view-tab-btn active" data-tab="triage" data-i18n="tabTriage">
+        ⚖️ Legal Triage (BNS)
+      </button>
+      <button class="view-tab-btn" data-tab="drafter" data-i18n="tabDrafter">
+        📝 Document Drafter
+      </button>
+      <button class="view-tab-btn" data-tab="verifier" data-i18n="tabVerifier">
+        📋 Verify Document
+      </button>
+      <button class="view-tab-btn" data-tab="lawsearch" data-i18n="tabLawSearch">
+        🔍 Search Laws (NyayaSearch)
+      </button>
+      <button class="view-tab-btn" data-tab="contract" data-i18n="tabContract">
+        📑 Contract Simplifier
+      </button>
+      <button class="view-tab-btn" data-tab="rights" data-i18n="tabRights">
+        🛡️ Citizen Rights Guide
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       HERO TELEMETRY & STATUTORY BENCHMARKS
+       ======================================================================== -->
+  <div class="hero-banner">
+    <div class="container hero-grid">
+      <div class="metric-card">
+        <div class="metric-icon-box gold">📜</div>
+        <div class="metric-info">
+          <span class="metric-label" data-i18n="metricBnsTitle">New Criminal Codes</span>
+          <span class="metric-val" data-i18n="metricBnsVal">BNS 2023 & BNSS 2023</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon-box green">🏛️</div>
+        <div class="metric-info">
+          <span class="metric-label" data-i18n="metricAidTitle">Free Legal Aid</span>
+          <span class="metric-val" data-i18n="metricAidVal">Article 39A (NALSA 15100)</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon-box blue">🔒</div>
+        <div class="metric-info">
+          <span class="metric-label" data-i18n="metricPrivacyTitle">Zero-Cloud Privacy</span>
+          <span class="metric-val" data-i18n="metricPrivacyVal">100% Offline / Local Server</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon-box red">🗣️</div>
+        <div class="metric-info">
+          <span class="metric-label" data-i18n="metricLangTitle">Multilingual Access</span>
+          <span class="metric-val" data-i18n="metricLangVal">8 Indian Languages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MAIN APPLICATION WORKSPACES
+       ======================================================================== -->
+  <main class="container" style="flex: 1; padding-top: 0.5rem; padding-bottom: 2rem;">
+
+    <!-- Multilingual Audio Legal Guidance Bar -->
+    <div class="voice-guidance-box">
+      <div class="voice-info-left">
+        <div class="voice-icon">📢</div>
+        <div>
+          <div style="font-weight: 700; color: var(--accent-gold); font-size: 0.95rem;" data-i18n="audioNoticeTitle">
+            Spoken Legal Advisory:
+          </div>
+          <div id="voiceNoticeBanner" style="font-size: 0.85rem; color: var(--text-main);" data-i18n="audioNotice">
+            Legal audio advisory armed. Click play to listen to spoken legal briefing.
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <audio id="legalAudioPlayer" controls style="height: 38px; border-radius: 6px;"></audio>
+        <button id="btnVoicePlay" class="btn btn-secondary" style="padding: 0.45rem 0.9rem;" data-topic="intro_welcome" data-i18n="btnListenAgain">
+          🔊 Replay Voice Advice
+        </button>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         TAB 1: GRIEVANCE TRIAGE & BNS MAPPING
+         ====================================================================== -->
+    <section id="panel-triage" class="tab-content-panel section-block">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" data-i18n="step1Title">
+            ⚖️ Step 1: Describe Your Legal Grievance in Plain Language
+          </h2>
+          <p class="section-sub" data-i18n="step1Sub">
+            Analyze Cyber Scams, Tenant Security Deposits, Salary Withholding, or Criminal Harassment
+          </p>
+        </div>
+      </div>
+
+      <div class="triage-workspace">
+        <!-- Left: Input Card -->
+        <div class="triage-input-card">
+          <div class="sample-chips-row">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;" data-i18n="sampleGrievancesLabel">Quick Samples:</span>
+            <button class="sample-chip chip-btn" data-sample="cyber" data-i18n="btnSampleCyber">💳 Cyber UPI Scam</button>
+            <button class="sample-chip chip-btn" data-sample="rent" data-i18n="btnSampleRent">🏠 Tenancy Deposit</button>
+            <button class="sample-chip chip-btn" data-sample="job" data-i18n="btnSampleJob">💼 Unpaid Salary</button>
+            <button class="sample-chip chip-btn" data-sample="harassment" data-i18n="btnSampleThreat">🚨 Criminal Harassment</button>
+          </div>
+
+          <textarea id="triageGrievanceInput" class="triage-textarea" 
+            placeholder="Example: My landlord at Gachibowli refuses to return my security deposit of Rs 75,000 despite vacating the flat on time..."
+            data-i18n-ph="triagePlaceholder"></textarea>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <button id="btnRunTriage" class="btn btn-primary" data-i18n="btnAnalyze">
+              🔍 Analyze Legal Case & Map BNS Laws
+            </button>
+            <div id="triageLoader" style="display: none; font-size: 0.85rem; color: var(--accent-gold);" data-i18n="triageLoading">
+              ⏳ Correlating BNS 2023 & legacy IPC sections...
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Results Panel -->
+        <div class="triage-results-panel" id="triageResultsContainer">
+          <div class="result-card" style="text-align: center; padding: 2.5rem 1.5rem; color: var(--text-muted);">
+            <div style="font-size: 3rem; margin-bottom: 0.75rem;">📜</div>
+            <h3 style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.4rem;" data-i18n="triageInitialTitle">
+              Legal Analysis Not Started
+            </h3>
+            <p style="font-size: 0.85rem; max-width: 400px; margin: 0 auto;" data-i18n="triageInitialDesc">
+              Describe your dispute on the left and click 'Analyze Legal Case'. The AI will immediately map BNS/IPC sections, severity, evidentiary checklist, and an action roadmap.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         TAB 2: DOCUMENT DRAFTER (LEGAL NOTICE & FIR)
+         ====================================================================== -->
+    <section id="panel-drafter" class="tab-content-panel section-block" style="display: none;">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" data-i18n="step2Title">
+            📝 Step 2: 1-Click Court-Ready Legal Notice & FIR Drafter
+          </h2>
+          <p class="section-sub" data-i18n="step2Sub">
+            Generate formal Pre-Litigation Legal Demand Notices, Police FIRs (Sec 173 BNSS), and Consumer Petitions
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button id="btnCopyDoc" class="btn btn-secondary" data-i18n="btnCopyDoc">📋 Copy Text</button>
+          <button id="btnPrintDoc" class="btn btn-primary" data-i18n="btnPrintDoc">🖨️ Print / Save PDF</button>
+        </div>
+      </div>
+
+      <div class="drafter-workspace">
+        <!-- Form Controls -->
+        <div class="result-card">
+          <h3 style="font-size: 1rem; color: var(--accent-gold); margin-bottom: 1rem;" data-i18n="docDetailsTitle">
+            📋 Document Particulars (Auto-Fill / Edit):
+          </h3>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label" data-i18n="lblSenderName">Your Full Name (Complainant):</label>
+              <input type="text" id="draftSenderName" class="form-input" value="Ramesh Kumar">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="lblRecipientName">Opposite Party / Landlord / Employer:</label>
+              <input type="text" id="draftRecipientName" class="form-input" value="Srinivas Rao (Landlord)">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="lblSenderAddr">Your Address:</label>
+            <input type="text" id="draftSenderAddress" class="form-input" value="H.No. 4-12, Madhapur, Hyderabad, Telangana">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="lblRecipientAddr">Opposite Party Address:</label>
+            <input type="text" id="draftRecipientAddress" class="form-input" value="Plot 88, Road No. 36, Jubilee Hills, Hyderabad">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label" data-i18n="lblDisputeType">Dispute Type:</label>
+              <input type="text" id="draftDisputeType" class="form-input" value="Rental Security Deposit Refund">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="lblAmount">Claim Amount (₹):</label>
+              <input type="text" id="draftAmount" class="form-input" value="75,000">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="lblDays">Notice Window (Days):</label>
+              <input type="number" id="draftNoticePeriod" class="form-input" value="15">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="lblFacts">Material Facts of Dispute:</label>
+            <textarea id="draftFacts" class="form-input" style="min-height: 90px; resize: vertical;">The recipient has illegally withheld the refundable security deposit of Rs 75,000 despite peaceful handover of the rental premises with 30 days prior written notice.</textarea>
+          </div>
+
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem;">
+            <button id="btnGenLegalNotice" class="btn btn-primary" data-i18n="btnDraftNotice">
+              📄 Draft Legal Demand Notice
+            </button>
+            <button id="btnGenFIR" class="btn btn-secondary" data-i18n="btnDraftFIR">
+              🚓 Draft Police FIR (Sec 173 BNSS)
+            </button>
+            <button id="btnGenConsumer" class="btn btn-secondary" data-i18n="btnDraftConsumer">
+              🛒 Draft Consumer Petition
+            </button>
+          </div>
+        </div>
+
+        <!-- Document Live Preview -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-weight: 700; color: var(--accent-gold); font-size: 0.9rem;" data-i18n="previewTitle">
+              📜 Court-Admissible Formal Document Preview:
+            </span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);" data-i18n="previewBadge">
+              A4 Court Format / 100% Admissible
+            </span>
+          </div>
+          <div id="docPreviewBox" class="doc-preview-box" data-i18n="previewInitialText">
+Select an option on the left to generate an official Pre-Litigation Legal Demand Notice or Police FIR application under Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         TAB 3: DOCUMENT VERIFIER & ACCURACY AUDIT (NEW FEATURE)
+         ====================================================================== -->
+    <section id="panel-verifier" class="tab-content-panel section-block" style="display: none;">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" data-i18n="verifierTitle">
+            📋 Step 3: Upload Legal Document & Audit Statutory Accuracy
+          </h2>
+          <p class="section-sub" data-i18n="verifierSub">
+            Audit Legal Notices, FIRs, Tenancy Leases, or Job Bonds for mandatory elements, court readiness & invalid sections
+          </p>
+        </div>
+      </div>
+
+      <div class="contract-workspace">
+        <!-- Input section -->
+        <div class="triage-input-card">
+          <div class="sample-chips-row">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Sample Audits:</span>
+            <button class="chip-btn" id="btnLoadSampleNoticeAudit" data-i18n="btnSampleNoticeAudit">📄 Sample Notice Audit</button>
+            <button class="chip-btn" id="btnLoadSampleLeaseAudit" data-i18n="btnSampleAgreementAudit">🏠 Sample Lease Audit</button>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="verifierUploadLabel">Upload Document File (.txt, .pdf, .doc):</label>
+            <input type="file" id="verifierFileInput" class="form-input" accept=".txt,.pdf,.doc,.docx" style="padding: 0.4rem;">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="verifierPasteLabel">Or Paste Document Text Here:</label>
+            <textarea id="verifierTextInput" class="triage-textarea" style="min-height: 180px;"
+              placeholder="Paste existing legal notice, complaint draft, or contract here to audit its legal accuracy..."
+              data-i18n-ph="verifierPastePh"></textarea>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <button id="btnRunVerification" class="btn btn-primary" data-i18n="btnAuditDocument">
+              🔍 Audit & Verify Document Accuracy
+            </button>
+            <div id="verifierLoader" style="display: none; font-size: 0.85rem; color: var(--accent-gold);" data-i18n="verifierLoading">
+              ⏳ Auditing mandatory elements & BNS statutory compliance...
+            </div>
+          </div>
+        </div>
+
+        <!-- Verification Results Container -->
+        <div id="verifierResultsContainer">
+          <div class="result-card" style="text-align: center; padding: 2.5rem 1.5rem; color: var(--text-muted);">
+            <div style="font-size: 3rem; margin-bottom: 0.75rem;">📋</div>
+            <h3 style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.4rem;" data-i18n="verifierInitialTitle">
+              No Document Audited Yet
+            </h3>
+            <p style="font-size: 0.85rem; max-width: 400px; margin: 0 auto;" data-i18n="verifierInitialDesc">
+              Upload or paste your legal notice or agreement on the left. The engine will check for party identification, notice periods, jurisdiction, void covenants, and give a Court Readiness Score (0-100).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         TAB 4: SEARCH INDIAN LAWS / NYAYASEARCH (NEW FEATURE)
+         ====================================================================== -->
+    <section id="panel-lawsearch" class="tab-content-panel section-block" style="display: none;">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" data-i18n="searchTitle">
+            🔍 Step 4: Search Indian Laws & Citizen Legal Encyclopedia
+          </h2>
+          <p class="section-sub" data-i18n="searchSub">
+            Search ANY Indian statute, section number, traffic fine, consumer right, or everyday crime in simple terms
+          </p>
+        </div>
+      </div>
+
+      <!-- Search Bar & Category Filters -->
+      <div class="result-card" style="margin-bottom: 1.25rem;">
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem;">
+          <input type="text" id="lawSearchInput" class="form-input" style="flex: 1; min-width: 250px; font-size: 0.95rem; padding: 0.7rem 1rem;"
+            placeholder="Search law, section, crime or situation (e.g. 'UPI fraud', 'cheque bounce', '318 BNS', '420 IPC', 'drunk driving', 'deposit')..."
+            data-i18n-ph="searchPlaceholder">
+          <button id="btnExecuteLawSearch" class="btn btn-primary" data-i18n="btnSearchLaw">
+            🔍 Search Laws
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Category Filter:</span>
+          <button class="law-filter-chip chip-btn active" data-cat="all" data-i18n="filterAllCategories">All Legal Categories</button>
+          <button class="law-filter-chip chip-btn" data-cat="Cybercrime">Cybercrime & UPI</button>
+          <button class="law-filter-chip chip-btn" data-cat="Financial">Financial Fraud</button>
+          <button class="law-filter-chip chip-btn" data-cat="Tenancy">Tenancy & Rent</button>
+          <button class="law-filter-chip chip-btn" data-cat="Traffic">Traffic & MV Act</button>
+          <button class="law-filter-chip chip-btn" data-cat="Women">Women's Rights</button>
+          <button class="law-filter-chip chip-btn" data-cat="Consumer">Consumer Protection</button>
+          <button class="law-filter-chip chip-btn" data-cat="Employment">Labor & Wages</button>
+        </div>
+      </div>
+
+      <!-- Search Results Container -->
+      <div id="lawSearchResultsContainer">
+        <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+          ⏳ Loading comprehensive Indian legal directory...
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         TAB 5: CONTRACT & AGREEMENT SIMPLIFIER
+         ====================================================================== -->
+    <section id="panel-contract" class="tab-content-panel section-block" style="display: none;">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" data-i18n="step3Title">
+            📑 Step 5: Contract & Agreement Simplifier (Void Traps Finder)
+          </h2>
+          <p class="section-sub" data-i18n="step3Sub">
+            Paste rental deeds or job contracts to flag void non-competes, illegal forfeitures, and fairness scores
+          </p>
+        </div>
+      </div>
+
+      <div class="contract-workspace">
+        <!-- Input Section -->
+        <div class="triage-input-card">
+          <div class="sample-chips-row">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;" data-i18n="sampleContractsLabel">Sample Agreements:</span>
+            <button class="sample-contract-chip chip-btn" data-contract="unfair_rent" data-i18n="btnSampleUnfairRent">🏠 Unfair Tenancy Agreement</button>
+            <button class="sample-contract-chip chip-btn" data-contract="unfair_employment" data-i18n="btnSampleUnfairJob">💼 Illegal Job Bond</button>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="lblAgreementType">Agreement Classification:</label>
+            <select id="contractTypeSelect" class="form-input">
+              <option value="rental_agreement">Residential Rental Agreement (Lease)</option>
+              <option value="employment_contract">Employment Contract / Offer Letter</option>
+              <option value="service_terms">Consumer / Service Terms of Use</option>
+            </select>
+          </div>
+
+          <textarea id="contractTextInput" class="triage-textarea" style="min-height: 200px;"
+            placeholder="Paste agreement terms or contract paragraphs here..."
+            data-i18n-ph="contractPlaceholder"></textarea>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button id="btnRunContract" class="btn btn-primary" data-i18n="btnSimplify">
+              🔍 Analyze Contract Terms
+            </button>
+            <div id="contractLoader" style="display: none; font-size: 0.85rem; color: var(--accent-gold);" data-i18n="contractLoading">
+              ⏳ Auditing under Section 27 Indian Contract Act...
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Section -->
+        <div id="contractResultsContainer">
+          <div class="result-card" style="text-align: center; padding: 2.5rem 1.5rem; color: var(--text-muted);">
+            <div style="font-size: 3rem; margin-bottom: 0.75rem;">🛡️</div>
+            <h3 style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.4rem;" data-i18n="contractInitialTitle">
+              Contract Analysis Pending
+            </h3>
+            <p style="font-size: 0.85rem; max-width: 400px; margin: 0 auto;" data-i18n="contractInitialDesc">
+              Paste contract terms on the left to detect illegal non-competes, arbitrary forfeiture clauses, and calculate a Fairness Score.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         TAB 6: CITIZEN RIGHTS & ARREST SAFEGUARDS
+         ====================================================================== -->
+    <section id="panel-rights" class="tab-content-panel section-block" style="display: none;">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" data-i18n="step4Title">
+            🛡️ Step 6: Constitutional Safeguards & Police Arrest Rights
+          </h2>
+          <p class="section-sub" data-i18n="step4Sub">
+            Section 47 BNSS grounds of arrest, protections for women, and Article 39A Free Legal Aid (NALSA 15100)
+          </p>
+        </div>
+      </div>
+
+      <div class="rights-grid" id="rightsCardsContainer">
+        <!-- Rendered dynamically by app.js -->
+        <div class="right-card">
+          <div class="right-card-title" data-i18n="rightsLoading">⏳ Loading constitutional safeguards...</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="footer-wrapper">
+    <div class="container footer-content">
+      <div>
+        <strong data-i18n="footerBrandDesc">NyayaSetu AI — Citizen Justice Bridge for Indian Citizens.</strong> 
+        <span style="color: var(--text-muted);" data-i18n="footerPortDesc">Dedicated Port: 8003 | Zero External Cloud Dependencies.</span>
+      </div>
+      <div style="font-size: 0.78rem; color: var(--text-dim);" data-i18n="footerDisclaimer">
+        ⚖️ Disclaimer: NyayaSetu AI is an artificial intelligence legal informational and drafting tool. For formal court representation, consult an advocate or dial NALSA Toll-Free 15100.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/static/js/translations.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
