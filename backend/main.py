@@ -121,7 +121,7 @@ class FIRDraftRequest(BaseModel):
     applicable_sections: Optional[str] = Field("Section 303, 318 BNS 2023", max_length=300)
 
 class VoiceRequest(BaseModel):
-    topic_key: str = Field("cyber_fraud_advice", max_length=100)
+    topic_key: str = Field("intro_welcome", max_length=100)
     lang: str = Field("te", max_length=10)
 
 @app.get("/", response_class=HTMLResponse)

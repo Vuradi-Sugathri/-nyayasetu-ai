@@ -94,12 +94,15 @@ def run_tests():
 
     # 5. Test Multilingual Legal Voice Engine
     voice = MultilingualLegalVoiceEngine()
+    test_topics = ["intro_welcome", "cyber_fraud_advice", "tenancy_deposit_advice", "salary_recovery_advice", "fir_lodging_advice", "arrest_rights_brief"]
     test_langs = ["te", "hi", "en", "ta", "mr", "kn", "or", "as"]
-    print("\n✅ Multilingual Legal Audio Guidance across 8 Indian Languages:")
-    for lang in test_langs:
-        audio_res = voice.get_legal_speech("cyber_fraud_advice", lang)
-        assert audio_res["audio_url"].startswith("data:audio/")
-        print(f"   • [{lang.upper()}] {audio_res['language']}: \"{audio_res['spoken_text'][:40]}...\"")
+    print("\n✅ Multilingual Legal Audio Guidance across All Topics & 8 Indian Languages:")
+    for topic in test_topics:
+        for lang in test_langs:
+            audio_res = voice.get_legal_speech(topic, lang)
+            assert audio_res["audio_url"].startswith("data:audio/")
+            assert len(audio_res["spoken_text"]) > 10
+        print(f"   • Topic '{topic}' validated for all 8 Indian languages.")
 
     # 6. Test Document Verifier & Accuracy Audit Engine
     from backend.engines.document_verifier_engine import LegalDocumentVerifierEngine

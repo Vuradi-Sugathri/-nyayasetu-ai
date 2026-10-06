@@ -14,7 +14,8 @@ const State = {
   verificationData: null,
   currentDocText: '',
   allLawsData: [],
-  selectedLawCategory: 'all'
+  selectedLawCategory: 'all',
+  activeVoiceTopic: 'intro_welcome'
 };
 
 // Geolocation Centroids for Indian States
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLanguage(State.lang);
   loadSafeguardsData();
   loadAllLaws();
-  triggerAudioForTopic('intro_welcome');
+  triggerAudioForTopic('intro_welcome', false);
 });
 
 /**
@@ -257,12 +258,30 @@ function initEventListeners() {
     });
   });
 
-  // Audio Playback
+  // Audio Playback Controls
   const btnVoicePlay = document.getElementById('btnVoicePlay');
+  const audioPlayer = document.getElementById('legalAudioPlayer');
+
   if (btnVoicePlay) {
     btnVoicePlay.addEventListener('click', () => {
-      const topic = btnVoicePlay.getAttribute('data-topic') || 'intro_welcome';
-      triggerAudioForTopic(topic);
+      if (audioPlayer && !audioPlayer.paused && audioPlayer.currentTime > 0) {
+        audioPlayer.pause();
+      } else {
+        const topic = btnVoicePlay.getAttribute('data-topic') || State.activeVoiceTopic || 'intro_welcome';
+        triggerAudioForTopic(topic, true);
+      }
+    });
+  }
+
+  if (audioPlayer) {
+    audioPlayer.addEventListener('play', () => {
+      if (btnVoicePlay) btnVoicePlay.innerHTML = "⏸️ Pause Voice Advice";
+    });
+    audioPlayer.addEventListener('pause', () => {
+      if (btnVoicePlay) btnVoicePlay.innerHTML = "🔊 Play Voice Advice";
+    });
+    audioPlayer.addEventListener('ended', () => {
+      if (btnVoicePlay) btnVoicePlay.innerHTML = "🔊 Replay Voice Advice";
     });
   }
 }
@@ -292,6 +311,9 @@ function setLanguage(langCode) {
   if (langSelect) langSelect.value = langCode;
 
   applyLanguage(langCode);
+
+  // Update audio guidance for active topic in newly selected language
+  triggerAudioForTopic(State.activeVoiceTopic || 'intro_welcome', false);
 
   // Re-render active dynamic content to eliminate any lingering regional text
   if (State.triageData) renderTriageResults(State.triageData);
@@ -373,11 +395,12 @@ async function runLegalTriage() {
     renderTriageResults(data);
 
     // Audio guidance trigger
-    const cat = data.category_key || '';
-    if (cat.includes('cyber')) triggerAudioForTopic('cyber_fraud_advice');
-    else if (cat.includes('rent')) triggerAudioForTopic('tenancy_deposit_advice');
-    else if (cat.includes('labor') || cat.includes('salary')) triggerAudioForTopic('salary_recovery_advice');
-    else triggerAudioForTopic('fir_lodging_advice');
+    const cat = (data.category_key || data.category || '').toLowerCase();
+    if (cat.includes('cyber')) triggerAudioForTopic('cyber_fraud_advice', true);
+    else if (cat.includes('rent') || cat.includes('tenan')) triggerAudioForTopic('tenancy_deposit_advice', true);
+    else if (cat.includes('labor') || cat.includes('salary') || cat.includes('wage')) triggerAudioForTopic('salary_recovery_advice', true);
+    else if (cat.includes('arrest') || cat.includes('custody')) triggerAudioForTopic('arrest_rights_brief', true);
+    else triggerAudioForTopic('fir_lodging_advice', true);
 
   } catch (err) {
     console.error(err);
@@ -1087,9 +1110,15 @@ async function loadSafeguardsData() {
 /**
  * Audio Synthesis & Guidance Playback
  */
-async function triggerAudioForTopic(topicKey) {
+async function triggerAudioForTopic(topicKey, autoPlay = true) {
   const audioPlayer = document.getElementById('legalAudioPlayer');
   const noticeBox = document.getElementById('voiceNoticeBanner');
+  const btnVoicePlay = document.getElementById('btnVoicePlay');
+
+  State.activeVoiceTopic = topicKey;
+  if (btnVoicePlay) {
+    btnVoicePlay.setAttribute('data-topic', topicKey);
+  }
 
   try {
     const res = await fetch('/api/legal/voice', {
@@ -1109,13 +1138,44 @@ async function triggerAudioForTopic(topicKey) {
     }
 
     if (audioPlayer && data.audio_url) {
-      audioPlayer.src = data.audio_url;
-      audioPlayer.play().catch(e => {
-        console.log("Audio autoplay restricted by browser.");
-      });
+      if (audioPlayer.src !== data.audio_url) {
+        audioPlayer.src = data.audio_url;
+      }
+      if (autoPlay) {
+        const playPromise = audioPlayer.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(e => {
+            console.log("Audio autoplay restricted by browser; trying Web Speech API fallback:", e);
+            speakWithBrowserTts(data.spoken_text, State.lang);
+          });
+        }
+      }
     }
 
   } catch (err) {
     console.error("Voice synthesis request error:", err);
+  }
+}
+
+function speakWithBrowserTts(text, langCode) {
+  if (!('speechSynthesis' in window) || !text) return;
+  try {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    const langMap = {
+      'en': 'en-IN',
+      'hi': 'hi-IN',
+      'te': 'te-IN',
+      'ta': 'ta-IN',
+      'mr': 'mr-IN',
+      'kn': 'kn-IN',
+      'or': 'or-IN',
+      'as': 'as-IN'
+    };
+    utterance.lang = langMap[langCode] || 'en-IN';
+    utterance.rate = 0.95;
+    window.speechSynthesis.speak(utterance);
+  } catch (e) {
+    console.log("SpeechSynthesis error:", e);
   }
 }

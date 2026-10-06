@@ -34,8 +34,19 @@ LANG_CONFIG = {
     "as": {"name": "Assamese", "native": "অসমীয়া", "gtts": "en"}
 }
 
-# Core Spoken Legal Advice Transcripts
+# Core Spoken Legal Advice Transcripts across all 8 Indian Languages
 LEGAL_SPEECH_CATALOG = {
+    "intro_welcome": {
+        "te": "న్యాయసేతు లీగల్ పోర్టల్‌కు స్వాగతం. మీ న్యాయపరమైన సమస్యను వివరించండి, మేము మీకు తగిన చట్టాలు, మీ హక్కులు మరియు పరిష్కార మార్గాలను అందిస్తాము.",
+        "hi": "न्यायसेतु एआई में आपका स्वागत है। अपनी कानूनी समस्या का विवरण दें, हम आपको नए भारतीय कानूनों के तहत आपके अधिकार और समाधान बताएंगे।",
+        "en": "Welcome to NyayaSetu Legal AI. Describe your legal grievance in plain language to receive immediate guidance, applicable Bharatiya Nyaya Sanhita laws, and action plans.",
+        "ta": "நியாயசேதுவிற்கு நல்வரவு. உங்கள் சட்டப் பிரச்சனையை பதிவிடுங்கள், புதிய பாரதிய நியாய சட்டம் மூலம் வழிகாட்டுதல் பெறுங்கள்.",
+        "mr": "न्यायसेतूमध्ये आपले स्वागत आहे. आपली कायदेशीर समस्या सांगा, आम्ही नवीन भारतीय कायद्यानुसार योग्य मार्गदर्शन करू.",
+        "kn": "ನ್ಯಾಯಸೇತುಗೆ ಸ್ವಾಗತ. ನಿಮ್ಮ ಕಾನೂನು ಸಮಸ್ಯೆಯನ್ನು ತಿಳಿಸಿ, ಸೂಕ್ತ ಪರಿಹಾರ ಮತ್ತು ಭಾರತೀಯ ನ್ಯಾಯ ಸಂಹಿತೆ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.",
+        "or": "ନ୍ୟାୟସେତୁରେ ଆପଣଙ୍କୁ ସ୍ୱାଗତ। ନିଜର ଆଇନଗତ ସମସ୍ୟା ଜଣାନ୍ତୁ ଏବଂ ସଠିକ୍ ପରାମର୍ଶ ପାଆନ୍ତୁ।",
+        "as": "ন্যায়সেতুত আপোনাক স্বাগতম। আপোনাৰ আইনী সমস্যা জনাওক আৰু উচিত পৰামৰ্শ লাভ কৰক।"
+    },
+
     "cyber_fraud_advice": {
         "te": "సైబర్ మోసం జరిగిన వెంటనే జాతీయ హెల్ప్‌లైన్ 1930 కు కాల్ చేయండి. మీ బ్యాంక్ లావాదేవీ UTR నంబర్‌ను తెలియజేయడం ద్వారా దొంగిలించబడిన డబ్బును స్తంభింపజేయవచ్చు.",
         "hi": "साइबर धोखाधड़ी होते ही तुरंत राष्ट्रीय हेल्पलाइन 1930 पर कॉल करें। अपने बैंक लेनदेन का यूटीआर नंबर दर्ज कराकर आप अपने पैसे को ब्लॉक करवा सकते हैं।",
@@ -58,8 +69,8 @@ LEGAL_SPEECH_CATALOG = {
         "as": "ভাৰতীয় আইন অনুসৰি গ্ৰেপ্তাৰ হোৱা ব্যক্তিৰ গ্ৰেপ্তাৰৰ কাৰণ জনা আৰু ২৪ ঘণ্টাৰ ভিতৰত দণ্ডাধীশৰ ওচৰত হাজিৰ কৰোৱাৰ সাংবিধানিক অধিকাৰ আছে।"
     },
 
-    "tenancy_refund_advice": {
-        "te": "ఇంటి యజమాని అద్దె డిపాజిట్ నిరాకరిస్తే, సెక్షన్ 126 భారతీయ న్యాయ సంహిత ప్రకారం నోటీసు జారీ చేసి లీగల్ నోటీసు ద్వారా 15 రోజుల్లో పూర్తి రికవరీ పొందవచ్చు.",
+    "tenancy_deposit_advice": {
+        "te": "ఇంటి యజమాని అద్దె డిపాజిట్ నిరాకరిస్తే, సెక్షన్ 126 భారతీయ న్యాయ సంహిత మరియు మోడల్ టెనెన్సీ యాక్ట్ ప్రకారం 15 రోజుల లీగల్ నోటీసు జారీ చేసి పూర్తి రికవరీ పొందవచ్చు.",
         "hi": "यदि मकान मालिक सुरक्षा जमा राशि वापस करने से मना करता है, तो आप 15 दिनों का कानूनी नोटिस भेजकर उपभोक्ता आयोग या रेंट ट्रिब्यूनल में शिकायत दर्ज कर सकते हैं।",
         "en": "If your landlord refuses to refund your security deposit, serve a formal 15-day statutory legal notice under the Model Tenancy Act before approaching the Rent Court.",
         "ta": "வாடகை முன்வைப்பு தொகையை திருப்பித் தர நில உரிமையாளர் மறுத்தால், 15 நாட்கள் அவகாசத்துடன் சட்டப்பூர்வ நோட்டீஸ் அனுப்பி தீர்வு பெறலாம்.",
@@ -67,19 +78,52 @@ LEGAL_SPEECH_CATALOG = {
         "kn": "ಮನೆ ಮಾಲೀಕರು ಠೇವಣಿ ಹಣ ಹಿಂದಿರುಗಿಸಲು ನಿರಾಕರಿಸಿದರೆ, 15 ದಿನಗಳ ಕಾನೂನು ನೋಟಿಸ್ ನೀಡಿ ನ್ಯಾಯಾಲಯದಲ್ಲಿ ದಾವೆ ಹೂಡಬಹುದು.",
         "or": "ଘର ମାଲିକ ସିକ୍ୟୁରିଟି ଡିପୋଜିଟ୍ ଫେରସ୍ତ ନକଲେ, 15 ଦିନର ଆଇନଗତ ନୋଟିସ୍ ପଠାଇ ନ୍ୟାୟାଳୟରେ ଅଭିଯୋଗ କରନ୍ତୁ।",
         "as": "ঘৰৰ মালিকে ছিকিউৰিটি ডিপ'জিট ঘূৰাই নিদিলে ১৫ দিনৰ আইনী জাননী প্ৰেৰণ কৰি ভাড়াতীয়া ন্যায়াধিকৰণত গোচৰ তৰক।"
+    },
+
+    "salary_recovery_advice": {
+        "te": "కంపెనీ జీతం చెల్లించకపోతే, వేతన చెల్లింపుల చట్టం ప్రకారం లీగల్ నోటీసు పంపవచ్చు మరియు లేబర్ కమిషనర్‌కు ఫిర్యాదు చేసి వడ్డీతో సహా రికవరీ పొందవచ్చు.",
+        "hi": "यदि कंपनी आपका वेतन रोकती है, तो आप वेतन भुगतान अधिनियम के तहत 15 दिनों का कानूनी नोटिस भेजकर श्रम आयुक्त के पास शिकायत दर्ज कर सकते हैं।",
+        "en": "If your employer withholds salary, issue a 15-day legal demand notice under the Payment of Wages Act and file a claim with the Labour Commissioner for recovery with interest.",
+        "ta": "நிறுவனம் ஊதியம் வழங்காவிட்டால், ஊதிய வழங்கல் சட்டத்தின் கீழ் சட்டப்பூர்வ நோட்டீஸ் அனுப்பி தொழிலாளர் ஆணையரிடம் முறையிடலாம்.",
+        "mr": "कंपनीने पगार न दिल्यास, वेतन देयक कायद्यांतर्गत कायदेशीर नोटीस पाठवून कामगार आयुक्तांकडे तक्रार दाखल करता येते.",
+        "kn": "ಸಂಸ್ಥೆಯು ವೇತನ ನೀಡದಿದ್ದರೆ, ವೇತನ ಪಾವತಿ ಕಾಯ್ದೆಯಡಿ ಕಾನೂನು ನೋಟಿಸ್ ನೀಡಿ ಕಾರ್ಮಿಕ ಆಯುಕ್ತರಿಗೆ ದೂರು ಸಲ್ಲಿಸಬಹುದು.",
+        "or": "କମ୍ପାନୀ ଦରମା ନଦେଲେ, ପେମେଣ୍ଟ ଅଫ୍ ୱେଜେସ୍ ଆଇନ ଅନୁଯାୟୀ ଲିଗାଲ ନୋଟିସ୍ ପଠାଇ ଲେବର କମିଶନରଙ୍କ ପାଖରେ ଅଭିଯୋଗ କରନ୍ତୁ।",
+        "as": "কোম্পানীয়ে দৰমহা নিদিলে শ্ৰমিক আয়ুক্তৰ ওচৰত আইনী জাননী প্ৰেৰণ কৰি অভিযোগ দাখিল কৰক।"
+    },
+
+    "fir_lodging_advice": {
+        "te": "పోలీసులు ఎఫ్ఐఆర్ నమోదు చేయడానికి నిరాకరిస్తే, భారతీయ నాగరిక సురక్ష సంహిత సెక్షన్ 173 ప్రకారం జీరో ఎఫ్ఐఆర్ లేదా ఎస్పీకి రిజిస్టర్డ్ పోస్ట్ ద్వారా ఫిర్యాదు చేయవచ్చు.",
+        "hi": "यदि पुलिस एफआईआर दर्ज करने से इंकार करे, तो भारतीय नागरिक सुरक्षा संहिता की धारा 173 के तहत जीरो एफआईआर या पुलिस अधीक्षक को डाक द्वारा शिकायत भेज सकते हैं।",
+        "en": "Under Section 173 of Bharatiya Nagarik Suraksha Sanhita, police must register an FIR for cognizable offences. If refused, you can file a Zero FIR or petition the Superintendent of Police.",
+        "ta": "காவல்துறை முதல் தகவல் அறிக்கை பதிவு செய்ய மறுத்தால், பி.என்.எஸ்.எஸ் பிரிவு 173-இன் கீழ் ஜீரோ எஃப்.ஐ.ஆர் பதிவு செய்ய அல்லது எஸ்.பி.யிடம் முறையிட உரிமை உண்டு.",
+        "mr": "पोलीसांनी एफआयआर दाखल करण्यास नकार दिल्यास, बीएनएसएस कलम 173 नुसार झिरो एफआयआर किंवा एसपींकडे तक्रार नोंदवता येते.",
+        "kn": "ಪೊಲೀಸರು ಎಫ್‌ಐಆರ್ ದಾಖಲಿಸಲು ನಿರಾಕರಿಸಿದರೆ, ಬಿಎನ್‌ಎಸ್‌ಎಸ್ ಸೆಕ್ಷನ್ 173 ಅಡಿಯಲ್ಲಿ ಝೀರೋ ಎಫ್‌ಐಆರ್ ಅಥವಾ ಎಸ್‌ಪಿಗೆ ದೂರು ನೀಡಬಹುದು.",
+        "or": "ପୋଲିସ ଏଫ୍ଆଇଆର୍ ରଖିବାକୁ ମନା କଲେ, ବିଏନଏସଏସ ଧାରା 173 ଅନୁଯାୟୀ ଜିରୋ ଏଫ୍ଆଇଆର୍ କିମ୍ବା ଏସପିଙ୍କୁ ଅଭିଯୋଗ ପଠାନ୍ତୁ।",
+        "as": "আৰক্ষীয়ে এজাহাৰ ল'বলৈ অস্বীকাৰ কৰিলে বিএনএছএছ ১৭৩ ধাৰাৰ অধীনত জিৰ' এজাহাৰ বা এছপিক অভিযোগ পত্ৰ প্ৰেৰণ কৰক।"
     }
 }
+
+# Alias backwards compatibility
+LEGAL_SPEECH_CATALOG["tenancy_refund_advice"] = LEGAL_SPEECH_CATALOG["tenancy_deposit_advice"]
+
 
 class MultilingualLegalVoiceEngine:
     def __init__(self):
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
-    def get_legal_speech(self, topic_key: str = "cyber_fraud_advice", lang_code: str = "te") -> Dict[str, Any]:
+    def get_legal_speech(self, topic_key: str = "intro_welcome", lang_code: str = "te") -> Dict[str, Any]:
         """Returns spoken audio and transcript in selected Indian language."""
         if lang_code not in LANG_CONFIG:
-            lang_code = "te" # Default to Telangana (Telugu)
+            lang_code = "te"  # Default to Telangana (Telugu)
 
-        topic_data = LEGAL_SPEECH_CATALOG.get(topic_key, LEGAL_SPEECH_CATALOG["cyber_fraud_advice"])
+        # Normalize alias keys
+        if topic_key == "tenancy_refund_advice":
+            topic_key = "tenancy_deposit_advice"
+
+        topic_data = LEGAL_SPEECH_CATALOG.get(topic_key)
+        if not topic_data:
+            topic_data = LEGAL_SPEECH_CATALOG.get("intro_welcome", LEGAL_SPEECH_CATALOG["cyber_fraud_advice"])
+
         text = topic_data.get(lang_code, topic_data.get("en", "Legal guidance active."))
 
         cache_hash = hashlib.md5(f"{topic_key}_{lang_code}_{text}".encode("utf-8")).hexdigest()
@@ -90,7 +134,7 @@ class MultilingualLegalVoiceEngine:
             if GTTS_AVAILABLE:
                 try:
                     target_gtts = LANG_CONFIG[lang_code]["gtts"]
-                    tts = gTTS(text=text, lang=target_gtts, tld="co.in", timeout=4.0)
+                    tts = gTTS(text=text, lang=target_gtts, timeout=5.0)
                     tts.save(str(cache_file))
                     success = True
                 except Exception:
@@ -99,7 +143,8 @@ class MultilingualLegalVoiceEngine:
             if not success:
                 # Synthesize acoustic wave tone as reliable fallback
                 wav_file = CACHE_DIR / f"{cache_hash}.wav"
-                self._synthesize_acoustic_alert(wav_file)
+                if not wav_file.exists():
+                    self._synthesize_acoustic_alert(wav_file)
                 cache_file = wav_file
 
         with open(cache_file, "rb") as f:
