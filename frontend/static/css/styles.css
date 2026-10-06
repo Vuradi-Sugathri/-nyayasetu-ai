@@ -4,71 +4,39 @@
    ========================================================================== */
 
 :root {
-  --bg-primary: #071120;
-  --bg-secondary: #0c1a30;
-  --bg-card: #142542;
-  --bg-card-hover: #1c3258;
-  --border-color: #243b60;
-  --border-glow: #eab308;
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --border-color: #e2e8f0;
+  --border-glow: #0284c7;
   
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
+  --text-main: #0f172a;
+  --text-muted: #475569;
   --text-dim: #64748b;
   
-  --accent-gold: #eab308;
-  --accent-gold-dark: #ca8a04;
-  --accent-gold-light: #fef08a;
+  --accent-gold: #b45309;
+  --accent-gold-dark: #92400e;
+  --accent-gold-light: #d97706;
   
-  --accent-green: #10b981;
-  --accent-green-bg: rgba(16, 185, 129, 0.15);
+  --accent-green: #059669;
+  --accent-green-bg: rgba(5, 150, 105, 0.10);
   
-  --accent-red: #ef4444;
-  --accent-red-bg: rgba(239, 68, 68, 0.16);
+  --accent-red: #dc2626;
+  --accent-red-bg: rgba(220, 38, 38, 0.10);
   
-  --accent-blue: #38bdf8;
-  --accent-blue-bg: rgba(56, 189, 248, 0.15);
+  --accent-blue: #0284c7;
+  --accent-blue-bg: rgba(2, 132, 199, 0.10);
   
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
   --font-serif: 'Merriweather', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-base: 15px;
   
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.45), 0 2px 4px -1px rgba(0, 0, 0, 0.25);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.35);
-  --shadow-gold: 0 0 15px rgba(234, 179, 8, 0.3);
-}
-
-/* High Contrast Gold / Black */
-body.high-contrast {
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-card: #141414;
-  --border-color: #ffd700;
-  --text-main: #ffff00;
-  --text-muted: #ffffff;
-  --text-dim: #cccccc;
-  --accent-gold: #ffd700;
-  --accent-green: #00ff66;
-  --accent-red: #ff3333;
-}
-
-/* Clean Day Reading Mode */
-body.day-mode {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
-  --border-color: #cbd5e1;
-  --border-glow: #0284c7;
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-dim: #64748b;
-  --accent-gold: #b45309;
-  --accent-green: #059669;
-  --accent-red: #dc2626;
-  --accent-blue: #0284c7;
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --shadow-gold: 0 2px 10px rgba(180, 83, 9, 0.15);
 }
 
 * {
@@ -153,8 +121,9 @@ body {
 .brand-tag {
   font-size: 0.68rem;
   font-weight: 800;
-  background: var(--accent-gold);
-  color: #000;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
   text-transform: uppercase;
@@ -206,13 +175,13 @@ body {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  background: rgba(234, 179, 8, 0.12);
-  border: 1px solid rgba(234, 179, 8, 0.35);
-  color: var(--accent-gold);
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  color: #92400e;
   padding: 0.35rem 0.65rem;
   border-radius: 6px;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -249,21 +218,22 @@ body {
 
 .view-tab-btn:hover {
   color: var(--text-main);
-  background: rgba(255, 255, 255, 0.05);
+  background: #f1f5f9;
 }
 
 .view-tab-btn.active {
-  background: var(--bg-card);
+  background: #ffffff;
   color: var(--accent-gold);
-  border-color: var(--accent-gold);
-  box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
+  border-color: #cbd5e1;
+  border-bottom: 2px solid var(--accent-gold);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 /* ==========================================================================
    Hero Telemetry Banner
    ========================================================================== */
 .hero-banner {
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, rgba(12, 26, 48, 0.6) 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   border-bottom: 1px solid var(--border-color);
   padding: 1.15rem 0;
   margin-bottom: 1.5rem;
@@ -298,9 +268,9 @@ body {
 }
 
 .metric-icon-box.gold {
-  background: rgba(234, 179, 8, 0.15);
+  background: #fef3c7;
   color: var(--accent-gold);
-  border: 1px solid var(--accent-gold);
+  border: 1px solid #fde68a;
 }
 
 .metric-icon-box.blue {
@@ -460,7 +430,7 @@ body {
 }
 
 .chip-btn {
-  background: var(--bg-secondary);
+  background: #f1f5f9;
   border: 1px solid var(--border-color);
   color: var(--text-muted);
   font-size: 0.78rem;
@@ -472,13 +442,14 @@ body {
 }
 
 .chip-btn:hover {
+  background: #ffffff;
   color: var(--accent-gold);
   border-color: var(--accent-gold);
 }
 
 .chip-btn.active {
   background: var(--accent-gold);
-  color: #000;
+  color: #ffffff;
   border-color: var(--accent-gold);
   font-weight: 700;
 }
@@ -503,23 +474,23 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.5rem;
 }
 
 .statute-tag {
-  background: rgba(234, 179, 8, 0.12);
-  border: 1px solid rgba(234, 179, 8, 0.3);
-  color: var(--accent-gold-light);
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #1e293b;
   border-radius: 6px;
-  padding: 0.6rem 0.85rem;
+  padding: 0.65rem 0.85rem;
   margin-bottom: 0.6rem;
   font-size: 0.85rem;
 }
 
 .statute-title {
   font-weight: 700;
-  color: var(--accent-gold);
+  color: #92400e;
   margin-bottom: 2px;
 }
 
@@ -622,7 +593,7 @@ body {
 }
 
 .right-rule-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-color);
   padding: 0.65rem 0;
   font-size: 0.85rem;
 }
@@ -647,8 +618,8 @@ body {
    Audio Player Pill
    ========================================================================== */
 .voice-guidance-box {
-  background: linear-gradient(135deg, rgba(234, 179, 8, 0.12) 0%, rgba(56, 189, 248, 0.08) 100%);
-  border: 1px solid rgba(234, 179, 8, 0.35);
+  background: linear-gradient(135deg, #fffbeb 0%, #f0f9ff 100%);
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 1rem 1.25rem;
   display: flex;
@@ -671,7 +642,7 @@ body {
 
 /* Footer */
 .footer-wrapper {
-  background: var(--bg-secondary);
+  background: #ffffff;
   border-top: 1px solid var(--border-color);
   padding: 1.5rem 0;
   margin-top: auto;

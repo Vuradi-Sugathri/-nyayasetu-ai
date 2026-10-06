@@ -176,21 +176,6 @@ function initEventListeners() {
     });
   }
 
-  // Accessibility Toggles
-  const contrastBtn = document.getElementById('contrastToggleBtn');
-  if (contrastBtn) {
-    contrastBtn.addEventListener('click', () => {
-      document.body.classList.toggle('high-contrast');
-    });
-  }
-
-  const dayModeBtn = document.getElementById('dayModeToggleBtn');
-  if (dayModeBtn) {
-    dayModeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('day-mode');
-    });
-  }
-
   // Triage Action Buttons
   const btnTriage = document.getElementById('btnRunTriage');
   if (btnTriage) btnTriage.addEventListener('click', runLegalTriage);
